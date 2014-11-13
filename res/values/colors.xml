@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!-- INDIGO -->
+
+    <item name="primary" type="color">#FF3F51B5</item>
+    <item name="accent1" type="color">#FFC5CAE9</item>
+    <item name="accent2" type="color">#FF3F51B5</item>
+    <item name="accent3" type="color">#FF303F9F</item>
+
+</resources>
