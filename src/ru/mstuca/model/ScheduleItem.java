@@ -1,14 +1,14 @@
 package ru.mstuca.model;
 
 public class ScheduleItem {
-	private Integer mNumber; // номер пары
-	private Integer mWeekDay; // день недели
-	private String mTitle; // название предмета
-	private String mDate; // дата проведения
-	private String mAuditory; // аудитория
-	private Integer mType; // тип занятия: практика, лекция, семинар, лаб.раб.
-	private String mTeacher; // имя преподавателя кто ведёт
-	private Integer mSubGroup; // номер подгруппы. 0 - для всех
+	private Integer mNumber; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	private Integer mWeekDay; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	private String mTitle; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	private String mDate; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	private String mAuditory; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	private Integer mType; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ.пїЅпїЅпїЅ.
+	private String mTeacher; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	private Integer mSubGroup; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. 0 - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	public ScheduleItem(Integer mNumber, Integer mWeekDay, String mTitle, String mDate, String mAuditory, Integer mType, String mTeacher,
 			Integer mSubGroup) {
@@ -23,35 +23,37 @@ public class ScheduleItem {
 		this.mSubGroup = mSubGroup;
 	}
 
-	public Integer getmNumber() {
+	public Integer getNumber() {
 		return mNumber;
 	}
 
-	public Integer getmWeekDay() {
+	public Integer getWeekDay() {
 		return mWeekDay;
 	}
 
-	public String getmTitle() {
+	public String getTitle() {
 		return mTitle;
 	}
 
-	public String getmDate() {
+	public String getDate() {
 		return mDate;
 	}
 
-	public String getmAuditory() {
+	public String getAuditory() {
 		return mAuditory;
 	}
 
-	public Integer getmType() {
+	public Integer getType() {
 		return mType;
 	}
 
-	public String getmTeacher() {
+	public String getTeacher() {
 		return mTeacher;
 	}
 
-	public Integer getmSubGroup() {
+	public Integer getSubGroup() {
 		return mSubGroup;
 	}
+
+
 }

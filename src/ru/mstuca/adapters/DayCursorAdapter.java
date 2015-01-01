@@ -39,7 +39,7 @@ public class DayCursorAdapter extends CursorAdapter {
 
 		int columnIndexAuditory = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY);
 		int columnIndexDate = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_DATE);
-		int columnIndexId = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_ID);
+		//int columnIndexId = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_ID);
 		int columnIndexNumber = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_NUMBER);
 		int columnIndexSubgroup = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_SUBGROUP);
 		int columnIndexTeacher = cursor.getColumnIndex(GroupScheduleDB.TABLE_GROUP_FIELD_TEACHER);

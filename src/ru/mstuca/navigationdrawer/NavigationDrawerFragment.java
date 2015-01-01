@@ -1,11 +1,6 @@
 package ru.mstuca.navigationdrawer;
 
 import ru.mstuca.R;
-import ru.mstuca.R.drawable;
-import ru.mstuca.R.id;
-import ru.mstuca.R.layout;
-import ru.mstuca.R.menu;
-import ru.mstuca.R.string;
 import ru.mstuca.fragments.MyListFragment;
 import ru.mstuca.fragments.SearchFragment;
 import ru.mstuca.provider.MstucaContentProvider;

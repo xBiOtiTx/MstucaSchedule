@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import ru.mstuca.model.Group;
 import ru.mstuca.model.GroupSchedule;
 import ru.mstuca.model.ListTeachers;
 import ru.mstuca.model.ScheduleItem;
@@ -19,18 +20,18 @@ import android.util.Log;
 import com.octo.android.robospice.request.SpiceRequest;
 
 public class GroupScheduleRequest extends SpiceRequest<GroupSchedule> {
-	private int mId;
+    private Group mGroup;
 
-	public GroupScheduleRequest(int id) {
+	public GroupScheduleRequest(Group group) {
 		super(GroupSchedule.class);
-		this.mId = id;
+		this.mGroup = group;
 	}
 
 	@Override
 	public GroupSchedule loadDataFromNetwork() throws Exception {
 		Log.d("TEST", "loadDataFromNetwork");
 
-		Uri.Builder uriBuilder = Uri.parse("http://r.mstuca.me/get_semester_schedule/group" + mId).buildUpon();
+		Uri.Builder uriBuilder = Uri.parse("http://r.mstuca.me/get_semester_schedule/group" + mGroup.getId()).buildUpon();
 		String url = uriBuilder.build().toString();
 
 		HttpURLConnection urlConnection = (HttpURLConnection) new URL(url).openConnection();

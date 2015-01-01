@@ -3,9 +3,11 @@ package ru.mstuca.persistance;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.mstuca.database.GroupScheduleDB;
 import ru.mstuca.database.MstucaDB;
+import ru.mstuca.database.SqlGroupScheduleDB;
+import ru.mstuca.model.Group;
 import ru.mstuca.model.GroupSchedule;
-import ru.mstuca.model.ListTeachers;
 import ru.mstuca.model.ScheduleItem;
 import ru.mstuca.model.Teacher;
 import ru.mstuca.provider.GroupContentProvider;
@@ -61,17 +63,29 @@ public class GroupSchedulePersister extends ObjectPersister<GroupSchedule> {
 	public GroupSchedule saveDataToCacheAndReturnData(final GroupSchedule data, final Object cacheKey) throws CacheSavingException {
 		Log.d("TEST", "saveDataToCacheAndReturnData(key=" + cacheKey + ") = " + data);
 
+        Group group;
+        if(cacheKey instanceof Group) {
+            group = (Group) cacheKey;
+        } else {
+            throw new CacheSavingException("cacheKey must be instanceof Group class");
+        }
+
 		ArrayList<ContentValues> values = new ArrayList<ContentValues>();
 
 		for (ScheduleItem t : data.getData()) {
 			ContentValues cv = new ContentValues();
-			// cv.put(MstucaDB.TABLE_TEACHERS_FIELD_TITLE, t.getTitle());
-			// values.add(cv);
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getAuditory());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getDate());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getNumber());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getSubGroup());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getTeacher());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getTitle());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getType());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getWeekDay());
+			values.add(cv);
 		}
 
-		// getApplication().getContentResolver().delete(MstucaContentProvider.TEACHERS_CONTENT_URI, null, null);
-		getApplication().getContentResolver().bulkInsert(GroupContentProvider.GROUP_CONTENT_URI, values.toArray(new ContentValues[values.size()]));
-
+        SqlGroupScheduleDB.getInstance(getApplication().getApplicationContext(),group).bulkInsert(values.toArray(new ContentValues[values.size()]));
 		return data;
 	}
 

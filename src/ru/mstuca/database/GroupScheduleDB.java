@@ -4,13 +4,13 @@ import ru.mstuca.model.Group;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class GroupScheduleDB {
 	public static final String DATABASE_NAME = "group.db"; // {id}group.db
-	public static final int DATABASE_VERSION = 1;
+	public static final int DATABASE_VERSION = 3;
 
 	public static final String TABLE_GROUP = "tbgroup";
-	public static final String TABLE_GROUP_FIELD_ID = "_id"; // pk int
 	public static final String TABLE_GROUP_FIELD_NUMBER = "number"; // int
 	public static final String TABLE_GROUP_FIELD_WEEK_DAY = "weekday"; // int
 	public static final String TABLE_GROUP_FIELD_TITLE = "title"; // text
@@ -19,8 +19,7 @@ public class GroupScheduleDB {
 	public static final String TABLE_GROUP_FIELD_TYPE = "type"; // int
 	public static final String TABLE_GROUP_FIELD_TEACHER = "teacher"; // text
 	public static final String TABLE_GROUP_FIELD_SUBGROUP = "subgroup"; // int
-	public static final String CREATE_TABLE_GROUP = "CREATE TABLE " + TABLE_GROUP + " (" + TABLE_GROUP_FIELD_ID + " INTEGER PRIMARY KEY,"
-			+ TABLE_GROUP_FIELD_NUMBER + " INTEGER," + TABLE_GROUP_FIELD_WEEK_DAY + " INTEGER," + TABLE_GROUP_FIELD_TITLE + " TEXT,"
+	public static final String CREATE_TABLE_GROUP = "CREATE TABLE " + TABLE_GROUP + " (" + TABLE_GROUP_FIELD_NUMBER + " INTEGER," + TABLE_GROUP_FIELD_WEEK_DAY + " INTEGER," + TABLE_GROUP_FIELD_TITLE + " TEXT,"
 			+ TABLE_GROUP_FIELD_DATE + " TEXT," + TABLE_GROUP_FIELD_AUDITORY + " TEXT," + TABLE_GROUP_FIELD_TYPE + " INTEGER,"
 			+ TABLE_GROUP_FIELD_TEACHER + " TEXT," + TABLE_GROUP_FIELD_SUBGROUP + " INTEGER" + ");";
 
@@ -35,13 +34,14 @@ public class GroupScheduleDB {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
+            Log.w("TEST", "onCreate " + this.getClass().getName());
 			db.execSQL(CREATE_TABLE_GROUP);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// Log.w("SQLite", "onUpgrade " + oldVersion + " -> " + newVersion);
-			db.execSQL("DROP TABLE IF IT EXIST " + TABLE_GROUP);
+			Log.w("TEST", "onUpgrade " + oldVersion + " -> " + newVersion);
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_GROUP);
 			onCreate(db);
 		}
 	}
