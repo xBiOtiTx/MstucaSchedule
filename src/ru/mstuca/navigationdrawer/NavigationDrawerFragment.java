@@ -119,8 +119,7 @@ public class NavigationDrawerFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				FragmentManager fragmentManager = getFragmentManager();
-				fragmentManager.beginTransaction().replace(R.id.container, SearchFragment.newInstance()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container, SearchFragment.newInstance()).commit();
 			}
 		});
 

@@ -31,6 +31,7 @@ public class GroupScheduleRequest extends SpiceRequest<GroupSchedule> {
 	public GroupSchedule loadDataFromNetwork() throws Exception {
 		Log.d("TEST", "loadDataFromNetwork");
 
+        Log.d("TEST", "http://r.mstuca.me/get_semester_schedule/group" + mGroup.getId());
 		Uri.Builder uriBuilder = Uri.parse("http://r.mstuca.me/get_semester_schedule/group" + mGroup.getId()).buildUpon();
 		String url = uriBuilder.build().toString();
 

@@ -1,12 +1,12 @@
 package ru.mstuca.model;
 
 public class Lesson {
-	private String mSubGroupTitle; // Название подгруппы // null - все или ""?
-	private String mTitle; // название предмета
-	private String mTeacher; // имя преподавателя кто ведёт
-	private ELessonType mType; // тип занятия: практика, лекция, семинар, лаб.раб.
-	private String mTypeTitle; // Название типа занятия
-	private String mRoom; // номер аудитории
+	private String mSubGroupTitle; // РќР°Р·РІР°РЅРёРµ РїРѕРґРіСЂСѓРїРїС‹ // null - РІСЃРµ РёР»Рё ""?
+	private String mTitle; // РЅР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°
+	private String mTeacher; // РёРјСЏ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ РєС‚Рѕ РІРµРґС‘С‚
+	private ELessonType mType; // С‚РёРї Р·Р°РЅСЏС‚РёСЏ: РїСЂР°РєС‚РёРєР°, Р»РµРєС†РёСЏ, СЃРµРјРёРЅР°СЂ, Р»Р°Р±.СЂР°Р±.
+	private String mTypeTitle; // РќР°Р·РІР°РЅРёРµ С‚РёРїР° Р·Р°РЅСЏС‚РёСЏ
+	private String mRoom; // РЅРѕРјРµСЂ Р°СѓРґРёС‚РѕСЂРёРё
 
 	public Lesson(String mTitle, String mTeacher, ELessonType mType, String mRoom) {
 		super();

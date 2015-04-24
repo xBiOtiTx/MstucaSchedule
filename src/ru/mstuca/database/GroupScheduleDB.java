@@ -10,9 +10,16 @@ public class GroupScheduleDB {
 	public static final String DATABASE_NAME = "group.db"; // {id}group.db
 	public static final int DATABASE_VERSION = 3;
 
+    // TODO public static final String TABLE_GROUP_META = "tbgroupmeta"; // metadata for TABLE_GROUP
+    // public static final String TABLE_GROUP_META_FIELD_WEEKS_COUNT = "weekscount";
+    // public static final String TABLE_GROUP_META_FIELD_LAST_UPDATE = "lastupdate";
+    // public static final String TABLE_GROUP_META_FIELD_FIRST_DATE = "firstdate";
+    // public static final String TABLE_GROUP_META_FIELD_LAST_DATE = "lastdate";
+
 	public static final String TABLE_GROUP = "tbgroup";
 	public static final String TABLE_GROUP_FIELD_NUMBER = "number"; // int
-	public static final String TABLE_GROUP_FIELD_WEEK_DAY = "weekday"; // int
+	public static final String TABLE_GROUP_FIELD_WEEK_DAY = "weekday"; // int // TODO deprecated
+    // TODO public static final String TABLE_GROUP_FIELD_WEEK_NUMBER = "weeknumber";
 	public static final String TABLE_GROUP_FIELD_TITLE = "title"; // text
 	public static final String TABLE_GROUP_FIELD_DATE = "date"; // text
 	public static final String TABLE_GROUP_FIELD_AUDITORY = "auditory"; // text

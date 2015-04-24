@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public abstract class MyBaseAdapter<T> extends BaseAdapter {
-	private Context mContext;
-	private LayoutInflater mInflater;
-	private ArrayList<T> mItems;
+	Context mContext;
+	LayoutInflater mInflater;
+	ArrayList<T> mItems;
 
 	MyBaseAdapter(Context context, ArrayList<T> items) {
 		super();

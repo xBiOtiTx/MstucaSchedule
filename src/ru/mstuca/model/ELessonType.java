@@ -1,29 +1,80 @@
 package ru.mstuca.model;
 
+import android.util.Log;
+
 public enum ELessonType {
-	LECTURE, // лекция
-	PRACTICAL, // пр зан
-	LAB, // лаб раб
-	SEMINAR; // семинар
-	// TODO EMPTY
+    LECTURE, // Р»РµРєС†РёСЏ
+    PRACTICAL, // РїСЂ Р·Р°РЅ
+    LAB, // Р»Р°Р± СЂР°Р±
+    SEMINAR, // СЃРµРјРёРЅР°СЂ
+    EMPTY; // РїСѓСЃС‚Рѕ
+    // ERROR; // РѕС€РёР±РєР°
 
-	public String getTitle() {
-		// TODO брать строки откуда-то из вне
-		switch (this) {
-		case LAB:
-			return "Лаб.раб.";
+    public static final int STATUS_LECTURE = 1;
+    public static final int STATUS_PRACTICAL = 2;
+    public static final int STATUS_LAB = 3;
+    public static final int STATUS_SEMINAR = 4;
+    public static final int STATUS_EMPTY = 0;
 
-		case LECTURE:
-			return "Лекция";
+    public static int toStatus(ELessonType lesson) {
+        switch (lesson) {
+            case LECTURE:
+                return STATUS_LECTURE;
 
-		case PRACTICAL:
-			return "Пр.Зан.";
+            case PRACTICAL:
+                return STATUS_PRACTICAL;
 
-		case SEMINAR:
-			return "Семинар";
+            case LAB:
+                return STATUS_LAB;
 
-		}
+            case SEMINAR:
+                return STATUS_SEMINAR;
 
-		return ""; // а хз
-	}
+            default:
+                return STATUS_EMPTY;
+        }
+    }
+
+    public static ELessonType fromStatus(int status) {
+        switch (status) {
+            case STATUS_LECTURE :
+                return LECTURE;
+
+            case STATUS_PRACTICAL :
+                return PRACTICAL;
+
+            case STATUS_LAB :
+                return LAB;
+
+            case STATUS_SEMINAR :
+                return SEMINAR;
+
+            default :
+                return EMPTY;
+        }
+    }
+
+    public String getTitle() {
+        // TODO Take the strings from the resources
+        switch (this) {
+            case LAB:
+                return "Р›Р°Р±.СЂР°Р±.";
+
+            case LECTURE:
+                return "Р›РµРєС†РёСЏ";
+
+            case PRACTICAL:
+                return "РџСЂ.Р—Р°РЅ.";
+
+            case SEMINAR:
+                return "РЎРµРјРёРЅР°СЂ";
+
+            case EMPTY:
+                return "РџСѓСЃС‚Рѕ";
+
+            default:
+                Log.d("TEST", "Invalid ELessonType");
+                return "";
+        }
+    }
 }

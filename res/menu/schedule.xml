@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ru.mstuca.MainActivity" >
+
+    <item
+        android:id="@+id/menu_action_today"
+        android:showAsAction="withText|ifRoom"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="@string/action_today"/>
+
+
+</menu>

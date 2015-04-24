@@ -1,60 +1,41 @@
 package ru.mstuca.fragments;
 
+import ru.mstuca.MstucaConstants;
 import ru.mstuca.service.MstucaSpiceService;
 
 import com.octo.android.robospice.SpiceManager;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 
-public class BaseFragment extends Fragment implements OnSharedPreferenceChangeListener {
-	protected static final String APP_TITLE = "title";
-	protected static final String APP_SUBTITLE = "subtitle";
 
-	private SpiceManager spiceManager = new SpiceManager(MstucaSpiceService.class);
-
-	protected Context mContext;
-
-	// protected AsipApplication mApp;
-	// protected FragmentActivity mActivity;
-
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		this.mContext = activity.getApplicationContext();
-		// this.mApp = (AsipApplication) activity.getApplication();
-		// this.mActivity = (FragmentActivity) activity;
-	}
+public class BaseFragment extends Fragment implements OnSharedPreferenceChangeListener,MstucaConstants {
+	private SpiceManager mSpiceManager = new SpiceManager(MstucaSpiceService.class);
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setRetainInstance(true);
-		spiceManager.start(getActivity().getApplicationContext());
-
-		// TODO or mb an mActivity?
-		// mContext.getSharedPreferences(AsipPreferences.APP_SHARED_PREFERENCES, 0).registerOnSharedPreferenceChangeListener(this);
+		mSpiceManager.start(getActivity().getApplicationContext());
+		getActivity().getSharedPreferences(APP_SHARED_PREFERENCES, Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
 	}
 
 	public SpiceManager getSpiceManager() {
-		return spiceManager;
+		return mSpiceManager;
 	}
 
 	@Override
 	public void onDestroy() {
-		if (spiceManager.isStarted()) { // TODO or -> onStart()/onStop()? // may be the bug https://github.com/stephanenicolas/robospice/issues/96
-			spiceManager.shouldStop();
+        super.onDestroy();
+		if (mSpiceManager.isStarted()) { // TODO or -> onStart()/onStop()? // may be the bug https://github.com/stephanenicolas/robospice/issues/96
+			mSpiceManager.shouldStop();
 		}
-		// mContext.getSharedPreferences(AsipPreferences.APP_SHARED_PREFERENCES, 0).unregisterOnSharedPreferenceChangeListener(this);
-		super.onDestroy();
+		getActivity().getSharedPreferences(APP_SHARED_PREFERENCES, 0).unregisterOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		// Empty. For override method;
 	}
 }

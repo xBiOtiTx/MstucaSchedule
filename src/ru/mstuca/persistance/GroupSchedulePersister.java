@@ -70,21 +70,21 @@ public class GroupSchedulePersister extends ObjectPersister<GroupSchedule> {
             throw new CacheSavingException("cacheKey must be instanceof Group class");
         }
 
-		ArrayList<ContentValues> values = new ArrayList<ContentValues>();
-
+		ArrayList<ContentValues> values = new ArrayList<ContentValues>(data.getData().size());
 		for (ScheduleItem t : data.getData()) {
 			ContentValues cv = new ContentValues();
             cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getAuditory());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getDate());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getNumber());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getSubGroup());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getTeacher());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getTitle());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getType());
-            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_AUDITORY, t.getWeekDay());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_DATE, t.getDate());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_NUMBER, t.getNumber());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_SUBGROUP, t.getSubGroup());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_TEACHER, t.getTeacher());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_TITLE, t.getTitle());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_TYPE, t.getType());
+            cv.put(GroupScheduleDB.TABLE_GROUP_FIELD_WEEK_DAY, t.getWeekDay());
 			values.add(cv);
 		}
 
+        SqlGroupScheduleDB.getInstance(getApplication().getApplicationContext(),group).clear();
         SqlGroupScheduleDB.getInstance(getApplication().getApplicationContext(),group).bulkInsert(values.toArray(new ContentValues[values.size()]));
 		return data;
 	}
